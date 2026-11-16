@@ -39,5 +39,5 @@ window.JFY_DATA = {
   closing_title: "With love, we await you",
   hero_image: "assets/img/hero.webp",
   music_url: "assets/music.mp3",
-  music_credit: "\u201CTouching Moments Two - Higher\u201D by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0"
+  music_credit: ""
 };
