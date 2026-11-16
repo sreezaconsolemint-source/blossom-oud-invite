@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Wedding Invitation</title>
+<meta name="description" content="A wedding invitation — Blossom Oud by Just For You">
+<meta name="theme-color" content="#f9e6d4">
+<link rel="preload" href="assets/img/hero.webp" as="image">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="is-locked">
+<audio id="bgm" loop preload="auto"></audio>
+
+<!-- ========== Envelope intro ========== -->
+<div id="intro" role="button" tabindex="0" aria-label="Tap to open the invitation">
+  <div class="env-back"></div>
+  <div class="flap-w flap-w--l"><div class="flap flap--l"></div></div>
+  <div class="flap-w flap-w--r"><div class="flap flap--r"></div></div>
+  <div class="flap-w flap-w--b"><div class="flap flap--b"></div></div>
+  <div class="flap-w flap-w--t"><div class="flap flap--t"></div></div>
+  <div class="seal"><img src="assets/img/seal.webp" alt=""><span class="seal__t" id="sealText"></span></div>
+  <div class="env-tap" data-bind="tap_text"></div>
+  <img class="env-orn" src="assets/img/lineflower.svg" alt="">
+</div>
+
+<!-- fixed golden bokeh layer over the page -->
+<div class="bokeh" aria-hidden="true"><canvas id="bokeh"></canvas><div class="bokeh__tint"></div></div>
+
+<button id="audioBtn" type="button" aria-label="Pause music">
+  <svg class="i-pause" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+  <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>
+</button>
+
+<main id="page">
+  <!-- 1. hero -->
+  <section class="sec s-hero" id="s-hero">
+    <div class="a hero-art"><img data-src-k="hero_image" src="assets/img/hero.webp" alt=""></div>
+    <div class="a hero-n1 t-script h-anim" data-bind="name1"></div>
+    <div class="a hero-amp t-script h-anim">&amp;</div>
+    <div class="a hero-n2 t-script h-anim" data-bind="name2"></div>
+    <div class="a hero-date t-body h-anim" data-bind="date_long"></div>
+    <div class="a hero-time t-body h-anim" data-bind="time_line" data-opt></div>
+  </section>
+
+  <!-- 2. card -->
+  <section class="sec s-card" id="s-card">
+    <img class="a card-frame" src="assets/img/frame.svg" alt="">
+    <div class="a card-top" data-anim="fadeinup" data-dur="2" data-dist="50" data-bind="card_top" data-opt></div>
+    <img class="a card-flower pulse" src="assets/img/flower8.svg" alt="">
+    <div class="a card-text" id="cardText" data-anim="fadeinup" data-dur="2" data-dist="40" data-bind="card_text" data-ml></div>
+    <div class="a card-venue t-script" data-anim="fadeinup" data-dur="2" data-dist="40" data-bind="venue"></div>
+    <img class="a card-line" src="assets/img/lineflower.svg" alt="" data-anim="fadeinup" data-dur="2" data-dist="50">
+  </section>
+
+  <!-- 3. countdown -->
+  <section class="sec s-count" id="s-count">
+    <h2 class="a sec-title t-script fit" data-bind="countdown_title"></h2>
+    <img class="a divider" src="assets/img/divider.svg" alt="" data-anim="zoomin" data-dur="2" data-scale=".15">
+    <div class="a cd" id="cd" data-anim="fadein" data-dur="2">
+      <div class="cd__n" id="cd-d" style="--x:63px">0</div><div class="cd__c" style="--x:109px">:</div>
+      <div class="cd__n" id="cd-h" style="--x:148px">00</div><div class="cd__c" style="--x:186px">:</div>
+      <div class="cd__n" id="cd-m" style="--x:234px">00</div><div class="cd__c" style="--x:280px">:</div>
+      <div class="cd__n" id="cd-s" style="--x:327px">00</div>
+      <div class="cd__l" style="--x:63px">Days</div><div class="cd__l" style="--x:148px">Hours</div><div class="cd__l" style="--x:234px">Minutes</div><div class="cd__l" style="--x:327px">Seconds</div>
+    </div>
+    <div class="a cd-done t-script" id="cdDone" hidden>Today is the day!</div>
+  </section>
+
+  <!-- 4. order of events -->
+  <section class="sec s-tl" id="s-tl">
+    <h2 class="a sec-title t-script fit" data-bind="schedule_title"></h2>
+    <img class="a divider" src="assets/img/divider.svg" alt="" data-anim="zoomin" data-dur="2" data-scale=".15">
+    <div class="a tl" id="tl"><div class="tl__line" id="tlLine"></div><img class="tl__lotus" id="tlLotus" src="assets/img/lotus.svg" alt=""></div>
+  </section>
+
+  <!-- 5. venue -->
+  <section class="sec s-venue" id="s-venue">
+    <h2 class="a sec-title t-script fit" data-bind="venue_title"></h2>
+    <img class="a divider" src="assets/img/divider.svg" alt="" data-anim="zoomin" data-dur="2" data-scale=".15">
+    <img class="a pin bobpin" src="assets/img/pin.svg" alt="">
+    <div class="a v-name t-body" data-anim="fadeinup" data-dur="2" data-dist="20" data-bind="venue"></div>
+    <div class="a v-city t-body" data-anim="fadeinup" data-dur="2" data-dist="20" data-bind="venue_city" data-opt></div>
+    <div class="a v-art"><img src="assets/img/venue.webp" alt=""></div>
+  </section>
+
+  <!-- 6. dress code -->
+  <section class="sec s-dress" id="s-dress">
+    <h2 class="a sec-title t-script fit" data-bind="dress_title"></h2>
+    <img class="a divider" src="assets/img/divider.svg" alt="" data-anim="zoomin" data-dur="2" data-scale=".15">
+    <img class="a guests" src="assets/img/guests.webp" alt="">
+    <div class="a dress-text t-body" data-anim="fadeinup" data-dur="2" data-dist="20" data-bind="dress_text" id="dressText"></div>
+    <h3 class="a pal-title t-script" data-bind="palette_title" id="palTitle"></h3>
+    <div class="a pal" id="pal">
+      <i data-anim="fadeinup" data-dur="2" data-dist="40" style="--x:63px"><b id="pc1"></b></i>
+      <i data-anim="fadeinup" data-dur="2" data-dist="40" data-delay=".1" style="--x:132px"><b id="pc2"></b></i>
+      <i data-anim="fadeinup" data-dur="2" data-dist="40" data-delay=".2" style="--x:201px"><b id="pc3"></b></i>
+      <i data-anim="fadeinup" data-dur="2" data-dist="40" data-delay=".3" style="--x:270px"><b id="pc4"></b></i>
+    </div>
+  </section>
+
+  <!-- 7. ladies / gentlemen -->
+  <section class="sec s-lg" id="s-lg">
+    <div class="lg" data-wrap="ladies"><h3 class="t-script lg__t" data-bind="ladies_title"></h3><p class="t-body lg__p" data-anim="fadeinup" data-dur="2" data-dist="20" data-bind="ladies_text"></p></div>
+    <div class="lg" data-wrap="gents"><h3 class="t-script lg__t" data-bind="gents_title"></h3><p class="t-body lg__p" data-anim="fadeinup" data-dur="2" data-dist="20" data-bind="gents_text"></p></div>
+  </section>
+
+  <!-- 8. RSVP -->
+  <section class="sec s-rsvp" id="s-rsvp">
+    <h2 class="a sec-title t-script fit" data-bind="rsvp_title"></h2>
+    <img class="a divider" src="assets/img/divider.svg" alt="" data-anim="zoomin" data-dur="2" data-scale=".15">
+    <form class="a rf" id="rsvpForm" data-anim="fadein" data-dur="2" novalidate>
+      <label class="rf__g"><span class="rf__l">Name</span><input class="rf__i" name="name" autocomplete="name" required></label>
+      <label class="rf__g"><span class="rf__l">Number of guests</span><input class="rf__i" name="guests" inputmode="numeric"></label>
+      <div class="rf__g rf__g--r"><span class="rf__l">Will you attend?</span>
+        <label class="rf__rd"><input type="radio" name="att" value="Yes, I will be there"><i></i>Yes, I will be there</label>
+        <label class="rf__rd"><input type="radio" name="att" value="Sorry, I can't make it"><i></i>Sorry, I can't make it</label>
+      </div>
+      <p class="rf__err" id="rfErr" hidden>Please add your name and choose an answer.</p>
+      <button class="rf__btn" type="submit">SUBMIT</button>
+      <p class="rf__ok" id="rfOk" hidden>Thank you! WhatsApp will open with your reply.</p>
+    </form>
+  </section>
+
+  <!-- 9. map title + 10. map -->
+  <section class="sec s-mapt" id="s-mapt">
+    <h2 class="a sec-title t-script fit" data-bind="map_title"></h2>
+    <img class="a divider" src="assets/img/divider.svg" alt="" data-anim="zoomin" data-dur="2" data-scale=".15">
+  </section>
+  <section class="sec s-map" id="s-map">
+    <img class="a map-frame" src="assets/img/mapframe.svg" alt="">
+    <iframe class="a map" id="mapFrame" title="Venue map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <a class="a map-open" id="mapOpen" target="_blank" rel="noopener" hidden>Open in Google Maps ↗</a>
+  </section>
+
+  <!-- 11. closing -->
+  <section class="sec s-end" id="s-end">
+    <img class="a chand" id="chand" src="assets/img/chandelier.webp" alt="">
+    <h2 class="a sec-title t-script fit end-title" data-bind="closing_title"></h2>
+    <img class="a end-line" src="assets/img/decorline.svg" alt="">
+    <img class="a end-flower" src="assets/img/fineflower.svg" alt="">
+  </section>
+  <footer class="credit" id="credit"><span data-bind="music_credit" data-opt></span><br>Artwork &amp; design: original illustrations for Just For You</footer>
+</main>
+
+<script src="assets/sample-data.js"></script>
+<script src="assets/jfy-codec.js"></script>
+<script src="assets/data-loader.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Customize your Blossom Oud invitation — Just For You</title>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/editor.css">
+<style>:root{--c1:#747b54;--c2:#b0936a;--c3:#866739;--c4:#3d3426;--mono:linear-gradient(180deg,#8a9165,#5f6644);--page:linear-gradient(180deg,#fbf1e6,#f3e2cf);--head:'Ovo';--script:'Imperial Script';--ui:'Source Sans 3'}.grp summary{font-size:19px}.sheet h2{font-size:40px}</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="brand__mono">❁</span><div><b>Blossom Oud</b><small>Wedding website invitation</small></div></div>
+  <nav class="tabs" role="tablist"><button type="button" class="tab on" data-view="form">✎ Edit</button><button type="button" class="tab" data-view="preview">👁 Preview</button></nav>
+</header>
+<div class="wrap">
+  <form class="panel" id="ed" autocomplete="off" novalidate></form>
+  <section class="preview" id="preview">
+    <div class="phone"><div class="phone__notch"></div><iframe id="pv" title="Invitation preview"></iframe></div>
+    <p class="pvnote">Live preview · the envelope opening is skipped here, guests will see it</p>
+  </section>
+</div>
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet__card">
+    <button type="button" class="sheet__x" id="sheetX" aria-label="Close">×</button>
+    <div class="sheet__tick">✓</div>
+    <h2>Your invitation is ready!</h2>
+    <p>Share this link with your guests. Everything you typed is saved inside the link.</p>
+    <div class="link"><input id="shareUrl" readonly aria-label="Your invitation link"><button type="button" class="btn btn--main" id="copyBtn">Copy</button></div>
+    <p class="note" id="lenNote"></p>
+    <div class="sheet__btns">
+      <a class="btn btn--wa" id="waShare" target="_blank" rel="noopener">Share on WhatsApp</a>
+      <a class="btn btn--ghost" id="openLink" target="_blank" rel="noopener">Open invitation ↗</a>
+      <button type="button" class="btn btn--ghost" id="nativeShare" hidden>Share…</button>
+    </div>
+  </div>
+</div>
+<script src="assets/sample-data.js"></script>
+<script>
+window.JFY_FORM = {
+  title: 'Wedding invitation', draftKey: 'jfy-blossom-oud-draft',
+  shareText: function (d) { return 'You are invited to the wedding of ' + d.name1 + ' & ' + d.name2 + ' ✨'; },
+  groups: [
+    { title: '💍 The Couple', open: true, fields: [
+      { k: 'name1', label: 'Name shown first', req: true, max: 20, half: true },
+      { k: 'name2', label: 'Name shown second', req: true, max: 20, half: true },
+      { k: 'seal_text', label: 'Text on the gold wax seal', type: 'textarea', rows: 2, max: 40, hint: 'Bismillah, ॐ, or your initials like M&A — leave empty for initials' },
+      { k: 'tap_text', label: '“Tap to open” text', max: 24, opt: false }
+    ]},
+    { title: '📅 Date & Time', open: true, fields: [
+      { k: 'event_date', label: 'Wedding date', type: 'datetime', req: true },
+      { k: 'time_prefix', label: 'Word before the time', max: 12, ph: 'from', hint: 'shows as “from 4 PM” under the date' },
+      { k: 'countdown_title', label: 'Countdown title', max: 30 }
+    ]},
+    { title: '📜 Invitation Card', open: true, fields: [
+      { k: 'card_top', label: 'Blessing at the top of the card', max: 50, hint: 'Arabic, Urdu, Hindi or English all work' },
+      { k: 'card_text', label: 'Invitation text', type: 'textarea', rows: 7, max: 320, hint: 'press Enter for a new line; the venue name is added below in gold script' }
+    ]},
+    { title: '🕰️ Order of Events', open: true, fields: [
+      { k: 'schedule_title', label: 'Section title', max: 30, opt: false },
+      { k: 'events', type: 'list', item: 'event', presetKey: 'name', presets: ['Welcome Reception', 'Nikah Ceremony', 'Baraat', 'Varmala', 'Pheras', 'Dinner', 'Mehfil', 'Qawwali', 'Party', 'Rukhsati'], fields: [
+        { k: 'time', label: 'Time', type: 'time', opt: false },
+        { k: 'name', label: 'Event name', max: 22, opt: false }
+      ]}
+    ]},
+    { title: '📍 Venue & Map', open: true, fields: [
+      { k: 'venue_title', label: 'Section title', max: 24 },
+      { k: 'venue', label: 'Venue name', req: true, max: 40 },
+      { k: 'venue_city', label: 'City / area line', max: 40 },
+      { k: 'venue_address', label: 'Full address for the map', max: 110 },
+      { k: 'map_title', label: 'Map title', max: 28 },
+      { k: 'venue_map_url', label: 'Google Maps link', type: 'url', hint: 'the map is found from the address anyway', ph: 'https://maps.app.goo.gl/…' }
+    ]},
+    { title: '👗 Dress Code', fields: [
+      { k: 'dress_title', label: 'Section title', max: 24 },
+      { k: 'dress_text', label: 'Dress code note', type: 'textarea', rows: 3, max: 160 },
+      { k: 'palette_title', label: 'Colour palette title', max: 24, hint: 'leave empty to hide the colour circles' },
+      { k: 'palette1', label: 'Colour 1', type: 'color', half: true }, { k: 'palette2', label: 'Colour 2', type: 'color', half: true },
+      { k: 'palette3', label: 'Colour 3', type: 'color', half: true }, { k: 'palette4', label: 'Colour 4', type: 'color', half: true },
+      { k: 'ladies_title', label: 'Ladies title', max: 20, half: true }, { k: 'gents_title', label: 'Gentlemen title', max: 20, half: true },
+      { k: 'ladies_text', label: 'Note for ladies', type: 'textarea', rows: 2, max: 110 },
+      { k: 'gents_text', label: 'Note for gentlemen', type: 'textarea', rows: 2, max: 110 }
+    ]},
+    { title: '✅ RSVP, Closing & Music', fields: [
+      { k: 'rsvp_title', label: 'RSVP title', max: 28 },
+      { k: 'rsvp_whatsapp', label: 'WhatsApp number for RSVPs', type: 'tel', max: 16, ph: '919876543210', hint: 'with country code' },
+      { k: 'closing_title', label: 'Closing line', max: 34 },
+      { k: 'music_enabled', label: 'Background music (soft piano)', type: 'toggle' }
+    ]}
+  ]
+};
+</script>
+<script src="assets/jfy-codec.js"></script>
+<script src="assets/editor.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+/* Demo data for "Blossom Oud" live invitation (Just For You).
+   The app can replace this object, or pass #data=<encoded JSON> in the URL (see jfy-codec.js). */
+window.JFY_DATA = {
+  name1: "Mehr",
+  name2: "Arhaan",
+  event_date: "2027-04-18T16:00",
+  time_prefix: "from",
+  seal_text: "\u0628\u0650\u0633\u0652\u0645\u0650 \u0671\u0644\u0644\u0651\u064e\u0647\u0650\n\u0671\u0644\u0631\u0651\u064e\u062d\u0652\u0645\u064e\u0646\u0650 \u0671\u0644\u0631\u0651\u064e\u062d\u0650\u064a\u0645\u0650",
+  tap_text: "Tap to open",
+  card_top: "\u0628\u0650\u0633\u0652\u0645\u0650 \u0671\u0644\u0644\u0651\u064e\u0647\u0650 \u0671\u0644\u0631\u0651\u064e\u062d\u0652\u0645\u064e\u0646\u0650 \u0671\u0644\u0631\u0651\u064e\u062d\u0650\u064a\u0645\u0650",
+  card_text: "Mehr & Arhaan\n\nwith the blessings of their families request the honour of your presence at their wedding\n\non Sunday, 18 April 2027\nat four in the evening\n\nat",
+  venue: "Rambagh Palace",
+  venue_city: "Jaipur, Rajasthan",
+  venue_address: "Bhawani Singh Road, Rambagh, Jaipur 302005",
+  venue_map_url: "",
+  countdown_title: "The Celebration Begins",
+  schedule_title: "Order of Events",
+  events: [
+    { time: "16:00", name: "Welcome Reception" },
+    { time: "17:00", name: "Nikah Ceremony" },
+    { time: "19:00", name: "Dinner" },
+    { time: "20:30", name: "Mehfil" }
+  ],
+  venue_title: "Venue",
+  dress_title: "Dress Code",
+  dress_text: "Join us in graceful evening wear that matches the glow and charm of our celebration.",
+  palette_title: "Colour palette",
+  palette1: "#60603b",
+  palette2: "#360c1a",
+  palette3: "#40312c",
+  palette4: "#efdfcd",
+  ladies_title: "Ladies",
+  ladies_text: "Flowing gowns, lehengas or shararas in rich, refined tones.",
+  gents_title: "Gentlemen",
+  gents_text: "Sherwanis, bandhgalas or sharp suits with polished shoes.",
+  rsvp_title: "Confirm Your Presence",
+  rsvp_whatsapp: "919876543210",
+  map_title: "Find Your Way",
+  closing_title: "With love, we await you",
+  hero_image: "assets/img/hero.webp",
+  music_url: "assets/music.mp3",
+  music_credit: "\u201CTouching Moments Two - Higher\u201D by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0"
+};
